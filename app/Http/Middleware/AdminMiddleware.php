@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Admin
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,7 +14,10 @@ class Admin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        return $next($request);
+{
+    if(auth()->user()->isAdmin == 1){
+       return $next($request);
     }
+    return redirect('home')->with('error',"You don't have admin access.");
+}
 }

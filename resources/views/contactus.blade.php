@@ -7,24 +7,30 @@
                 <h2 class="text-center" style="margin-bottom: 30px; "></h2>
                 <h4>Contact form</h4>                
                 <br />
-					<form action="">
-						<div class="form-group">
-							<label for="email">Email address:</label>
-							<input type="email" class="form-control" placeholder="Enter email" id="email">
-						</div>
-						<div class="form-group">
-							<label for="pwd">Subject:</label>
-							<input type="password" class="form-control" placeholder="Enter password" id="pwd">
-						</div>
-						<div class="form-group">
-							<label for="comment">Comment:</label>
-							<textarea class="form-control" rows="5" id="comment"></textarea>
-						</div>
-						
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</form>
-           </div>
-		   
+
+            <form method="post" action="{{ route('contactus.store') }}">
+			    {{ csrf_field() }}
+                
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Your Name *"  required />
+            
+                    </div>
+                    <div class="form-group ">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email *"  required />
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" name="subject" class="form-control" placeholder="Subject *"  />
+                    </div>                    
+                              
+                
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" name="message" placeholder="Your Message *" required></textarea>
+                      
+                    </div>
+               
+
+                <input type="submit" name="btnSubmit" class="btn btn-primary btn-round btn-sm" value="Send Message" />
+            </div>
 	<div class="col-md-offset-2 col-md-5">
        <h2 class="text-center" style="margin-bottom: 30px;"></h2>
            <h4>Contact information</h4>

@@ -14,16 +14,53 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');		
+            $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('username')->unique();
-            $table->boolean('isAdmin')->default(false);
-            $table->timestamp('email_verified_at')->nullable();			
+            $table->integer('role');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert([
+            [
+                'id' => 1,
+                'name' => 'admin',
+                'email' => 'admin@admin.com',
+                'username' => 'admin',
+                'password' => Hash::make('admin'),
+                'role' => 1,
+                'created_at' =>  \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+
+            ],
+            [
+                'id' => 2,
+                'name' => 'moderator',
+                'email' => 'moderator@moderator.com',
+                'username' => 'moderator',
+                'password' => Hash::make('moderator'),
+                'role' => 2,
+                'created_at' =>  \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+
+            ],
+            [
+                'id' => 3,
+                'name' => 'user',
+                'email' => 'user@user.com',
+                'username' => 'user',
+                'password' => Hash::make('user'),
+                'role' => 3,
+                'created_at' =>  \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+
+            ],
+
+
+        ]);
     }
 
     /**

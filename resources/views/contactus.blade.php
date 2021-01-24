@@ -1,33 +1,34 @@
 @extends('layouts.layout')
+
 @section ('Body')
 	<div class="container" style="margin-top: 120px;">
 		<div class="page-body">
 			<div class="row" style="margin-bottom: 190px;">
             <div class="col-md-5">
                 <h2 class="text-center" style="margin-bottom: 30px; "></h2>
-                <h4>Contact form</h4>                
+                <h4>Contact form</h4>
                 <br />
 
             <form method="post" action="{{ route('contactus.store') }}">
 			    {{ csrf_field() }}
-                
+
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" placeholder="Your Name *"  required />
-            
+
                     </div>
                     <div class="form-group ">
                         <input type="email" name="email" class="form-control" placeholder="Your Email *"  required />
                     </div>
                     <div class="form-group ">
                         <input type="text" name="subject" class="form-control" placeholder="Subject *"  />
-                    </div>                    
-                              
-                
+                    </div>
+
+
                     <div class="form-group">
                         <textarea class="form-control" rows="5" name="message" placeholder="Your Message *" required></textarea>
-                      
+
                     </div>
-               
+
 
                 <input type="submit" name="btnSubmit" class="btn btn-primary btn-round btn-sm" value="Send Message" />
             </div>
@@ -74,4 +75,4 @@
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-@endsection  
+@endsection

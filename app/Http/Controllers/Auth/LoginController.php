@@ -6,43 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
-{   
-    $input = $request->all();
-    $this->validate($request, [
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
-
-    if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-    {
-        if (auth()->user()->isAdmin == 1) {
-            return redirect()->route('home');
-        }else{
-            return redirect()->route('home');
-        }
-    }else{
-        return redirect()->route('login')
-            ->with('error','Email-Address And Password Are Wrong.');
-    }
-
-}
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
-
+    use AuthenticatesUsers {
+        logout as performLogout;
+    }
+    public function logout(Request $request)
+    {
+        $this->performLogout($request);
+        return redirect()->route('home');
+    }
     /**
      * Where to redirect users after login.
      *
@@ -58,5 +35,31 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt(array('email' => $request->email, 'password' => $request->password)))
+        {
+            $role = User::find(Auth::id())->role;
+
+            if ($role == 1) {
+                $request->session()->put('role', 1);
+            } elseif ($role == 2) {
+                $request->session()->put('role', 2);
+            } else {
+                $request->session()->put('role', 3);
+            }
+
+            return redirect()->route('home');
+        } else {
+            return redirect()->route('login')
+                ->with('error', 'Username And Password Are Wrong.');
+        }
     }
 }

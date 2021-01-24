@@ -12,32 +12,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
-
-Auth::routes();
-
-Route::get('/cars','CarsController@index')->name('cars.index');
-Route::get('/cars/{car}','CarsController@show')->name('cars.show');
-
-Route::get('/aboutus', function () {
-    return view('aboutus');
-});
-/*
-Route::get('/contactus', function () {
-    return view('contactus');
-});
-*/
-Route::get('/contactus', 'ContactformController@contactUS');
-Route::post('contactus', ['as'=>'contactus.store','uses'=>'ContactformController@contactSaveData']);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
+
+Route::get('/cars','CarsController@index')->name('cars');
+Route::get('/cars/{car}','CarsController@show')->name('cars-show');
+
+Route::get('/aboutus','HomeController@aboutUs')->name('about-us');
+Route::get('/contactus', 'ContactformController@contactUS')->name('contact-us');
+Route::post('contactus', ['as'=>'contactus.store','uses'=>'ContactformController@contactSaveData']);
+
+
 
 // Administration routes
 Route::prefix('admin')->middleware('admin')->group(function () {
-    Route::get('/', 'Administration\DashboardController@index');
-    Route::get('/vehiclemanagement', 'Administration\DashboardController@index');
-    
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::resource('/cars-management', 'CarsManageController');
+    Route::get('/users/management', 'DashboardController@usersManagement')->name('users-management');
+
 });

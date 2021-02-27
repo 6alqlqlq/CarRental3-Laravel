@@ -136,7 +136,7 @@
 
      
       
-<div class="container" style="margin-bottom: 87px;">
+<div class="container" style="margin-bottom: 150px;">
   <div class="row blog">
       <div class="col-md-12">
           <div id="blogCarousel" class="carousel slide" data-ride="carousel">

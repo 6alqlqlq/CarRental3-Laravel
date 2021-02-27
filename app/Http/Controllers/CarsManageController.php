@@ -14,7 +14,7 @@ class CarsManageController extends Controller
      */
     public function index()
     {
-        $cars = Cars::latest()->paginate(10);
+        $cars = Cars::paginate(10);
 
         return view('cars.index', compact('cars'));
     }

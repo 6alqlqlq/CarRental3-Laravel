@@ -12,7 +12,7 @@ class UserManageController extends Controller
     {
         // $order = User::orderBy('$request-column','$request->ask or desk')->paginate(5);
 
-        $users = User::latest()->paginate(10);
+        $users = User::paginate(10);
 
         return view('users.index', compact('users'));
     }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Cars;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $cars = Cars::inRandomOrder()->limit(5)->get();
+        return view('home',[
+
+        ]);
     }
 
     public function aboutUs()
@@ -28,11 +33,15 @@ class HomeController extends Controller
     }
     public function profile()
     {
-        return view('profile.index');
+        $user = User::where('id',Auth::user()->id)->first();
+        
+        return view('profile.index',[
+            'user' => $user,
+            ]);
     }
     public function profileEdit()
     {
-        return view('dashboard');
+        return view('profile.edit');
     }
     // public function multipleusersdelete(Request $request)
 	// {

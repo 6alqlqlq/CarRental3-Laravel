@@ -34,12 +34,12 @@
             <th>#</th>
             <th>brand</th>
             <th>model</th>
-            <th>image</th>
+            {{-- <th>image</th>
             <th>year</th>
             <th>capacity</th>
             <th>doors</th>
             <th>engine</th>
-            <th>gearbox</th>
+            <th>gearbox</th> --}}
             <th>status</th>
             <th>hire_cost</th>
 
@@ -50,12 +50,12 @@
                 <td>{{ $car->id }}</td>
                 <td>{{ $car->brand }}</td>
                 <td>{{ $car->model }}</td>
-                <td>{{ $car->image }}</td>
+                {{-- <td>{{ $car->image }}</td>
                 <td>{{ $car->year }}</td>
                 <td>{{ $car->capacity }}</td>
                 <td>{{ $car->doors }}</td>
                 <td>{{ $car->engine }}</td>
-                <td>{{ $car->gearbox }}</td>
+                <td>{{ $car->gearbox }}</td> --}}
                 <td>{{ $car->status }}</td>
                 <td>{{ $car->hire_cost }}</td>
 

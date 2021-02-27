@@ -27,23 +27,32 @@ Route::get('/aboutus','HomeController@aboutUs')->name('about-us');
 Route::get('/contactus', 'ContactformController@contactUS')->name('contact-us');
 Route::post('contactus', ['as'=>'contactus.store','uses'=>'ContactformController@contactSaveData']);
 
-Route::get('/rent', 'RentController@index')->name('rent');
-Route::get('/rent/create', 'RentController@create')->name('create-rent');
-Route::get('/rent/create', 'RentController@create')->name('show-rent');
 
 // Administration routes
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
     Route::resource('/cars-management', 'CarsManageController');
-    Route::post('/cars-management/multi-delete', 'CarsManageController@multiDelete')->name('cars-multi-delete');
+    Route::post('/multiple/cars/delete', 'CarsManageController@multiplecarsdelete');
+    // Route::post('/cars-management/multi-delete', 'CarsManageController@multiDelete')->name('cars-multi-delete');
 
     Route::resource('/users-management', 'UserManageController');    
-   
-    // Route::post('/users-management/multi-delete', 'UserManageController@multiDelete')->name('users-multi-delete');
+    Route::post('/multiple/users/delete', 'UserManageController@multipleusersdelete');
+
+    Route::resource('/rents-management', 'RentController')->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::post('/multiple/rent/delete ', 'UserManageController@multipleusersdelete');      
     
+    Route::resource('/stats-management', 'StatisticController');
 
 });
-Route::post('multipleusersdelete', 'UserManageController@multipleusersdelete');
-Route::post('multiplecarsdelete', 'CarsManageController@multiplecarsdelete');
 
-Route::get('profile', 'HomeController@profile');
+
+
+Route::get('profile', 'HomeController@profile')->name('profile');
+Route::get('profile/edit','HomeController@profileEdit')->name('profile-edit');
+// Route::get('profile/edit/{id}','HomeController@profileUpdate')->name('profile-edit');
+Route::get('profile/my-rents','RentController@myRents')->name('my-rents');
+
+
+Route::get('/rent/{id}', 'RentController@rents')->name('rent');
+Route::get('/rent/create', 'RentController@viewRent')->name('create-rent');
+Route::get('/rent/create', 'RentController@createRent')->name('show-rent');

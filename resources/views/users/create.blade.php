@@ -27,8 +27,14 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" >
+                    <strong>First name:</strong>
+                    <input type="text" name="first_name" class="form-control" >
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Last name:</strong>
+                    <input type="text" name="last_name" class="form-control" >
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

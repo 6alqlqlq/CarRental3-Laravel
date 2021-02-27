@@ -5,86 +5,65 @@
 	<div class="row">
 		<div class="col-md-3 ">
 		     <div class="list-group ">
-              <a href="#" class="list-group-item list-group-item-action active">Profile</a>
-              <a href="#" class="list-group-item list-group-item-action">My Rents</a>
-              <a href="#" class="list-group-item list-group-item-action">Logout</a>                  
-              
+              <a href="{{ route('profile') }}" class="list-group-item list-group-item-action active">Profile</a>
+              <a href="{{ route('my-rents') }}" class="list-group-item list-group-item-action">My Rents</a>                          
+              <a class="list-group-item list-group-item-action" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
           </div> 
 		</div>
 		<div class="col-md-9">
 		    <div class="card">
 		        <div class="card-body">
 		            <div class="row">
-		                <div class="col-md-12">
-		                    <h4>Your Profile</h4>
-		                    <hr>
+		                <div class="col-md-12 d-flex">
+		                    <h4 class="mr-auto p-2 mb-0">Your Profile</h4>
+                        <a class="btn btn-primary " href="{{ route('profile-edit') }}"> Edit</a>
+		                   
+                       
 		                </div>
+                    <hr>
 		            </div>
 		            <div class="row">
-		                <div class="col-md-12">
-		                    <form>
-                              <div class="form-group row">
-                                <label for="username" class="col-4 col-form-label">User Name*</label> 
-                                <div class="col-8">
-                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">First Name</label> 
-                                <div class="col-8">
-                                  <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="lastname" class="col-4 col-form-label">Last Name</label> 
-                                <div class="col-8">
-                                  <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="text" class="col-4 col-form-label">Nick Name*</label> 
-                                <div class="col-8">
-                                  <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="select" class="col-4 col-form-label">Display Name public as</label> 
-                                <div class="col-8">
-                                  <select id="select" name="select" class="custom-select">
-                                    <option value="admin">Admin</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="email" class="col-4 col-form-label">Email*</label> 
-                                <div class="col-8">
-                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="website" class="col-4 col-form-label">Website</label> 
-                                <div class="col-8">
-                                  <input id="website" name="website" placeholder="website" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="publicinfo" class="col-4 col-form-label">Public Info</label> 
-                                <div class="col-8">
-                                  <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="newpass" class="col-4 col-form-label">New Password</label> 
-                                <div class="col-8">
-                                  <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
-                                </div>
-                              </div> 
-                              <div class="form-group row">
-                                <div class="offset-4 col-8">
-                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
-                                </div>
-                              </div>
-                            </form>
+		                <div class="col-md-12 ">
+                      {{ $user }}
+                      <div class="d-flex">
+                        <div class="mr-auto p-2">First name</div>
+                        <div class="p-2">name</div>       
+                         {{-- {{$user->first_name  }}                      --}}                 
+                      </div>
+                      <div class="d-flex">
+                        <div class="mr-auto p-2">Last name</div>
+                        <div class="p-2">name</div>
+                         {{-- {{$user->last_name  }}                      --}}                        
+                      </div>
+                     
+                      <div class="d-flex">
+                        <div class="mr-auto p-2">Email</div>
+                        <div class="p-2">{{ $user->email }}</div>                        
+                      </div>
+                      <div class="d-flex">
+                        <div class="mr-auto p-2">Address</div>
+                        <div class="p-2">address</div>    
+                        {{-- {{$user->address  }}                      --}}
+                      </div>
+                      <div class="d-flex">
+                        <div class="mr-auto p-2">City</div>
+                        <div class="p-2">city</div>    
+                        {{-- {{$user->city  }}                      --}}
+                      </div>
+                      <div class="d-flex">
+                        <div class="mr-auto p-2">Country</div>
+                        <div class="p-2">country</div>    
+                        {{-- {{$user->country  }}                      --}}
+                      </div>
+
 		                </div>
 		            </div>
 		            

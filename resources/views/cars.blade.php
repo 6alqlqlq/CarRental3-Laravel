@@ -50,7 +50,25 @@
                     	    </form>
                     	    </div>
                     	    <div class="col-md-3">
-                    	        <button type="button" class="btn btn-primary">Compare Now</button>
+                    	        <button type="button" class="btn btn-primary btn-block">Sort</button>
+                    	    </div>
+                            <div class="col-md-12">
+                                <form class="">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-search h4 text-body"></i>
+                                        </div>
+                                        <!--end of col-->
+                                        <div class="col">
+                                            <input class="form-control form-control form-control-borderless" type="search" placeholder="Car">
+                                        </div>
+                                        <!--end of col-->
+                                        <div class="col-auto">
+                                            <button class="btn btn btn-primary " type="submit">Search</button>
+                                        </div>
+                                        <!--end of col-->
+                                    </div>
+                                </form>
                     	    </div>
                     	</div>
                     </div>
@@ -84,10 +102,12 @@
                                         <p><small>Doors :{{$cars->doors}}</small></p>
                                         <p><small>Status :{{$cars->status}}</small></p>
                                     </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-primary">Book now </button>
+                                    <div class="col-md-2 flex-direction-column">
+                                        <small class=" d-flex mt-2">Published {{$cars->created_at}}</small>
+                                        
                                         <a href="{{route('cars-show', $cars->id)}}"><button type="button" class="btn btn-primary"style="margin-top: 10px;padding-right: 32px;">Details </button></a>
-                                        <small>Published {{$cars->created_at}}</small>
+
+                                        <a class="btn btn-primary" style="margin-top: 150px" href="{{ route('rent',$cars->id) }}">Book now </a>
                                     </div>
                                 </div>
                             </div>

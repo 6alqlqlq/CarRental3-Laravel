@@ -59,6 +59,18 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "dev": [
+            "docker-compose up -d",
+            "docker-compose exec php composer install",
+            "docker-compose exec php php artisan migrate"
+        ],
+        "start": [
+            "docker-compose up -d"
+        ],
+        "restart": [
+            "docker-compose restart"
         ]
+
     }
 }

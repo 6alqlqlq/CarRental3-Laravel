@@ -15,7 +15,8 @@
                     @endauth
                 </div>
             @endif
-
+           
+            
 	 <!-- Carousel image-->
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -97,7 +98,7 @@
 			<p class="lead">4 door</p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="{{asset('img/rentals/golf7.jpg')}}" alt="special offer 1" style="width: 500px; height: 400px;" src="" data-holder-rendered="true">
+            <img class="featurette-image img-fluid mx-auto" src="{{asset('img/rentals/golf7.jpg')}}" alt="special offer 1" style="width: 300px; height: 200px;    margin-left: 120px!important;" src="" data-holder-rendered="true">
           </div>
         </div>
 
@@ -111,7 +112,7 @@
 			<p class="lead">4 door</p>
           </div>
           <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" src="{{asset('img/rentals/630.jpg')}}" alt="special offer 2"  data-holder-rendered="true" style="width: 500px; height: 400px;">
+            <img class="featurette-image img-fluid " src="{{asset('img/rentals/630.jpg')}}" alt="special offer 2"  data-holder-rendered="true" style="width: 300px; height: 200px;">
           </div>
         </div>
 
@@ -125,7 +126,7 @@
 			<p class="lead">4 door</p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="{{asset('img/rentals/teslaS.jpg')}}" alt="special offer 3"  data-holder-rendered="true" style="width: 500px; height: 400px;">
+            <img class="featurette-image img-fluid " src="{{asset('img/rentals/teslaS.jpg')}}" alt="special offer 3"  data-holder-rendered="true" style="width: 300px; height: 200px;    margin-left: 120px!important;">
           </div>
         </div>
 
@@ -133,4 +134,81 @@
 
         <!-- /END THE FEATURETTES -->
 
+     
+      
+<div class="container" style="margin-bottom: 87px;">
+  <div class="row blog">
+      <div class="col-md-12">
+          <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+
+              <ol class="carousel-indicators" style="    bottom: -62px;">
+                  <li data-target="#blogCarousel" data-slide-to="0" class="active" style="background-color: black;"></li>
+                  <li data-target="#blogCarousel" data-slide-to="1" style="background-color: black;"></li>
+              </ol>
+
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+
+                  <div class="carousel-item active">
+                      <div class="row">
+                          <div class="col-md-3">
+                              <a href="#">
+                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                              </a>
+                          </div>
+                          <div class="col-md-3">
+                              <a href="#">
+                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                              </a>
+                          </div>
+                          <div class="col-md-3">
+                              <a href="#">
+                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                              </a>
+                          </div>
+                          <div class="col-md-3">
+                              <a href="#">
+                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                              </a>
+                          </div>
+                      </div>
+                      <!--.row-->
+                  </div>
+                  <!--.item-->
+
+                  <div class="carousel-item">
+                      <div class="row">
+                          <div class="col-md-3">
+                              <a href="#">
+                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                              </a>
+                          </div>
+                          <div class="col-md-3">
+                              <a href="#">
+                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                              </a>
+                          </div>
+                          <div class="col-md-3">
+                              <a href="#">
+                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                              </a>
+                          </div>
+                          <div class="col-md-3">
+                              <a href="#">
+                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                              </a>
+                          </div>
+                      </div>
+                      <!--.row-->
+                  </div>
+                  <!--.item-->
+
+              </div>
+              <!--.carousel-inner-->
+          </div>
+          <!--.Carousel-->
+
+      </div>
+  </div>
+</div>
 @endsection

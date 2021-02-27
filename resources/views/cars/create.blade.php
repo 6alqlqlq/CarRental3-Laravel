@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('cars-management.index') }}" title="Go back"> Back </a>
+                <a class="btn btn-primary" href="{{ route('users-management.index') }}" title="Go back"> Back </a>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('cars-management.store') }}" method="POST" >
+    <form action="{{ route('users-management.store') }}" method="POST" >
         @csrf
 
         <div class="row">

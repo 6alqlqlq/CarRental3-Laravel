@@ -14,7 +14,7 @@ class CarsManageController extends Controller
      */
     public function index()
     {
-        $cars = Cars::latest()->paginate(5);
+        $cars = Cars::latest()->paginate(10);
 
         return view('cars.index', compact('cars'));
     }
@@ -96,5 +96,15 @@ class CarsManageController extends Controller
         return redirect()->route('cars.index')
             ->with('success', 'Product deleted successfully');
     }
+
+    public function multiplecarsdelete(Request $request)
+	{
+		$id = $request->id;
+		foreach ($id as $car) 
+		{
+			Cars::where('id', $car)->delete();
+		}
+		return redirect()->back();
+	}  
 
 }

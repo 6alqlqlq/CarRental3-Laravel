@@ -13,10 +13,10 @@ class CreateRentTable extends Migration
      */
     public function up()
     {
-        Schema::create('rent', function (Blueprint $table) {
+        Schema::create('rents', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id');
-            $table->foreign('car_id');
+            // $table->foreign('user_id');
+            // $table->foreign('car_id');
             $table->date('from_date');
             $table->date('to_date');
             $table->integer('rent_price');

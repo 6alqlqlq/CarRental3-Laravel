@@ -32,24 +32,26 @@
       </div>
       <div class="d-flex">
         <div class="mr-auto p-2">First name: </div>        
-        <div class="p-2">{{ $car->first_name }}</div>
+        <div class="p-2">{{ $user->first_name }}</div>
       </div>
       <div class="d-flex">
         <div class="mr-auto p-2">Last name: </div>        
-        <div class="p-2">{{ $car->last_name }}</div>
+        <div class="p-2">{{ $user->last_name }}</div>
       </div>
       <div class="d-flex">
         <div class="mr-auto p-2">Email: </div>        
-        <div class="p-2">{{ $car->email }}</div>
+        <div class="p-2">{{ $user->email }}</div>
       </div>
       <div class="d-flex">
         <div class="mr-auto p-2">Address: </div>        
-        <div class="p-2">{{ $car->address }}</div>
+        <div class="p-2">{{ $user->address }}</div>
       </div>
 
-
       <h3 class="my-3">Pick rent dates</h3>
-      <form>
+      <form method="POST" action="{{ route('create-rent') }}" >
+        @csrf
+        <input type="hidden" name="car" value="{{$car->id}}">
+        <input type="hidden" name="user" value="{{$user->id}}">
         <div class="d-flex">
           <div class="mr-auto p-2">Rent From date </div>        
           <input class="" type="date" name="from_date" id="datepicker">
@@ -60,7 +62,7 @@
         </div>
              
     </div>
-    <button class="btn btn-primary d-flex m-auto ">Rent now </button>
+    <button type="submit" class="btn btn-primary d-flex m-auto ">Rent now </button>
   </form>
   </div>   
         

@@ -14,8 +14,9 @@ class CarsController extends Controller
      */
     public function index()
     {
-        $cars= Cars::inRandomOrder()->take(8)->get();
-		return view ('cars')->with('cars',$cars);
+        $cars= Cars::paginate(10);
+        // dd($cars->links());
+		return view('cars', compact('cars'));
     }
 
     /**

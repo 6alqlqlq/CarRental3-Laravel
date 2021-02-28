@@ -23,76 +23,90 @@ class RentController extends Controller
 
     public function myRents()
     {
-        return view('rents.show');
+        $rents = Rent::where('user_id',Auth::user()->id)->get();
+        
+        return view('profile.rents',[
+            'rents' => $rents,
+        ]);
     }
 
-    public function createRent()
+    public function createRent(Request $request)
     {
-        return view('rents.create');
+        dd($request);
+        if($request->from_date < $request->to_date){
+            //    save
+            $rent = Rent::create();
+            $rent->user_id = $request->user;
+            $rent->car_id = $request->car;
+            $rent->from_date = $request->from_date;
+            $rent->to_date = $request->to_date;
+            $rent->save();
+
+            return view('profile.rents');
+        }else {
+            return view('home');
+        }
+              
     }    
      
     public function index()
     {        
-        $rent = Rent::paginate(10);
+        $rents = Rent::paginate(10);
 
-        return view('rents-manage.index', compact('rent'));
+        return view('rents-manage.index', compact('rents'));
     }
     
     public function create()
     {
-        return view('users.create');
+        return view('rents-manage.create');
     }
     
     public function store(Request $request)
     {
-        User::create($request->all());
+        Rent::create($request->all());
       
-        return redirect('/admin/users-management');
+        return redirect('/admin/rent-management');
     }
     
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = Rent::findOrFail($id);
 
-        return view('users.show', compact('user'));
+        return view('rents-manage.show', compact('rent'));
     }
     
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        $user = Rent::findOrFail($id);
+        return view('rents-manage.edit', compact('rent'));
     }
     
     public function update(Request $request,$id)
-    {       
-        // dd($request);
-       $user = User::where('id', $id)->first();
-       $user->name = $request->name;
-       $user->email = $request->email;
-       $user->username = $request->username;
-       $user->role = $request->role;
-       $user->password = $request->password;
-       $user->save();
-       
-        // $users->update($request->all());
-        // doesnt update all
-
-        return redirect('/admin/users-management');
+    {
+       $rent = Rent::where('id', $id)->first();
+       $rent->name = $request->name;
+       $rent->email = $request->email;
+       $rent->username = $request->username;
+       $rent->role = $request->role;   
+       $rent->password = $request->password;
+       $rent->save();
+    
+       return redirect('/admin/rents-management');
     }
    
     public function destroy($id)
     {
-        User::where('id', $id)->delete();
+        Rent::where('id', $id)->delete();
 
-        return redirect('/admin/users-management');
+        return redirect('/admin/rents-management');
     }
 
     public function multipleusersdelete(Request $request)
 	{
 		$id = $request->id;
-		foreach ($id as $user) 
+		foreach ($id as $rent) 
 		{
-			User::where('id', $user)->delete();
+			Rent::where('id', $rent)->delete();
 		}
 		return redirect()->back();
 	}

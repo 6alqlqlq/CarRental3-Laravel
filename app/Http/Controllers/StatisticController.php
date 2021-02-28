@@ -10,4 +10,5 @@ class StatisticController extends Controller
     {
         return view('statistics.index');
     }
+    
 }

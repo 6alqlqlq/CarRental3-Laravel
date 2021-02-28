@@ -43,9 +43,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     
     Route::resource('/stats-management', 'StatisticController');
 
+    Route::resource('/rent-penalty', 'RentPenaltyController');
+
+    Route::resource('/rent-price', 'RentPriceController');
+
 });
-
-
 
 Route::get('profile', 'HomeController@profile')->name('profile');
 Route::get('profile/edit','HomeController@profileEdit')->name('profile-edit');
@@ -54,5 +56,5 @@ Route::get('profile/my-rents','RentController@myRents')->name('my-rents');
 
 
 Route::get('/rent/{id}', 'RentController@rents')->name('rent');
-Route::get('/rent/create', 'RentController@viewRent')->name('create-rent');
-Route::get('/rent/create', 'RentController@createRent')->name('show-rent');
+Route::post('/rent/create', 'RentController@createRent')->name('create-rent');
+

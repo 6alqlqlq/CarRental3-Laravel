@@ -47,7 +47,7 @@
                 @endif
             @else
               <a id="navbarDropdown" class="nav-link dropdown-toggle shadow p-3 bg-body rounded text-white"  font size="100" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  {{ Auth::user()->username }} <span class="caret"></span>
+                  {{ Auth::user()->email }} <span class="caret"></span>
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

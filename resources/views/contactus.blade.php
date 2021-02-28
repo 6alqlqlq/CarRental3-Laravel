@@ -32,7 +32,7 @@
 
                 <input type="submit" name="btnSubmit" class="btn btn-primary btn-round btn-sm" value="Send Message" />
             </div>
-	<div class="col-md-offset-2 col-md-5">
+	<div class="col-md-offset-2 col-md-5 ml-5">
        <h2 class="text-center" style="margin-bottom: 30px;"></h2>
            <h4>Contact information</h4>
                 <address>

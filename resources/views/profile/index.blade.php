@@ -23,50 +23,45 @@
 		        <div class="card-body">
 		            <div class="row">
 		                <div class="col-md-12 d-flex">
-		                    <h4 class="mr-auto p-2 mb-0">Your Profile</h4>
-                        <a class="btn btn-primary " href="{{ route('profile-edit') }}"> Edit</a>
-		                   
-                       
-		                </div>
-                    <hr>
+                      <h4 class="mr-auto p-2 mb-0">Your Profile</h4>
+                      <a class="btn btn-primary " href="{{ route('profile-edit') }}"> Edit</a>
+                    </div>
+                  
 		            </div>
+                <hr>
 		            <div class="row">
-		                <div class="col-md-12 ">
-                      {{ $user }}
+		                <div class="col-md-12 ">                     
                       <div class="d-flex">
                         <div class="mr-auto p-2">First name</div>
-                        <div class="p-2">name</div>       
-                         {{-- {{$user->first_name  }}                      --}}                 
+                        <div class="p-2">{{ $user->first_name }}</div>       
+                                                            
                       </div>
                       <div class="d-flex">
                         <div class="mr-auto p-2">Last name</div>
-                        <div class="p-2">name</div>
-                         {{-- {{$user->last_name  }}                      --}}                        
+                        <div class="p-2">{{ $user->last_name }}</div>                                                                     
                       </div>
                      
                       <div class="d-flex">
                         <div class="mr-auto p-2">Email</div>
                         <div class="p-2">{{ $user->email }}</div>                        
                       </div>
+
                       <div class="d-flex">
                         <div class="mr-auto p-2">Address</div>
-                        <div class="p-2">address</div>    
-                        {{-- {{$user->address  }}                      --}}
+                        <div class="p-2">{{ $user->address }} </div>    
+                       
                       </div>
                       <div class="d-flex">
                         <div class="mr-auto p-2">City</div>
-                        <div class="p-2">city</div>    
-                        {{-- {{$user->city  }}                      --}}
-                      </div>
-                      <div class="d-flex">
-                        <div class="mr-auto p-2">Country</div>
-                        <div class="p-2">country</div>    
-                        {{-- {{$user->country  }}                      --}}
+                        <div class="p-2">{{$user->city  }}</div>                      
                       </div>
 
+                      <div class="d-flex">
+                        <div class="mr-auto p-2">Country</div>
+                        <div class="p-2">{{ $user->country }}</div>                       
+                      </div>
 		                </div>
-		            </div>
-		            
+		            </div>		            
 		        </div>
 		    </div>
 		</div>

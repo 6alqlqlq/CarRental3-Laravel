@@ -85,7 +85,7 @@
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
-
+       
         <!-- START THE FEATURETTES -->
 
         <hr class="featurette-divider">
@@ -151,63 +151,28 @@
 
                   <div class="carousel-item active">
                       <div class="row">
-                          <div class="col-md-3">
-                              <a href="#">
-                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                              </a>
-                          </div>
-                          <div class="col-md-3">
-                              <a href="#">
-                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                              </a>
-                          </div>
-                          <div class="col-md-3">
-                              <a href="#">
-                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                              </a>
-                          </div>
-                          <div class="col-md-3">
-                              <a href="#">
-                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                              </a>
-                          </div>
+                            @foreach ($cars as $car)
+                                <div class="col-md-3">
+                                    <a href="#">
+                                        <img src="{{$car->image}}" alt="Image" style="max-width:100%;">
+                                    </a>
+                                </div>
+                            @endforeach 
                       </div>
-                      <!--.row-->
                   </div>
-                  <!--.item-->
-
                   <div class="carousel-item">
                       <div class="row">
-                          <div class="col-md-3">
-                              <a href="#">
-                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                              </a>
-                          </div>
-                          <div class="col-md-3">
-                              <a href="#">
-                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                              </a>
-                          </div>
-                          <div class="col-md-3">
-                              <a href="#">
-                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                              </a>
-                          </div>
-                          <div class="col-md-3">
-                              <a href="#">
-                                  <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                              </a>
-                          </div>
-                      </div>
-                      <!--.row-->
-                  </div>
-                  <!--.item-->
-
+                            @foreach ($cars as $car)
+                                <div class="col-md-3">
+                                    <a href="#">
+                                        <img src="{{$car->image}}" alt="Image" style="max-width:100%;">
+                                    </a>
+                                </div>
+                            @endforeach 
+                       </div>                     
+                  </div>                 
               </div>
-              <!--.carousel-inner-->
-          </div>
-          <!--.Carousel-->
-
+            </div>
       </div>
   </div>
 </div>

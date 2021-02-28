@@ -16,9 +16,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        $cars = Cars::inRandomOrder()->limit(5)->get();
+        $cars = Cars::inRandomOrder()->limit(4)->get();
+        // $sepcialCars = Cars::inRandomOrder()->limit(3)->get();
         return view('home',[
-
+            'cars' => $cars,
+            // 'special' => $sepcialCars
         ]);
     }
 
@@ -41,8 +43,18 @@ class HomeController extends Controller
     }
     public function profileEdit()
     {
-        return view('profile.edit');
+        $user = User::where('id',Auth::user()->id)->first();
+        return view('profile.edit',[
+            'user' => $user,
+        ]);
     }
+    public function profileUpdate()
+    {
+        $user = User::where('id',Auth::user()->id)->first();
+        return view('profile.indext');
+    }
+
+
     // public function multipleusersdelete(Request $request)
 	// {
 	// 	$id = $request->id;

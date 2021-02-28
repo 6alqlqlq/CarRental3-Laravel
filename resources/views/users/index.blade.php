@@ -42,8 +42,8 @@
             <tr>
                 <td><input name='id[]' type="checkbox" class="delete-checkbox" value="{{ $user->id }}"></td>
                 <td>{{ $user->id }}</td>
-                <td>first_name</td>
-                <td>last_name</td>
+                <td>{{ $user->first_name }}</td>
+                <td>{{ $user->last_name }}</td>
                 <td>{{ $user->email }}</td>             
 
                 {{-- <td>{{ $user->username }}</td> --}}
@@ -54,28 +54,23 @@
                 @else
                 <td>User</td>
                 @endif
+                
+                <td>  
+                    <a class="btn btn-primary" href="{{ route('users-management.show', $user->id) }}" title="show">
+                        Details
+                    </a>
 
-                <td>{{ $user->role }}</td>
+                    <a class="btn btn-success" href="{{ route('users-management.edit', $user->id) }}">
+                        Edit
+                    </a>
 
-
-                <td>                 
-
-                        <a class="btn btn-primary" href="{{ route('users-management.show', $user->id) }}" title="show">
-                           Details
-                        </a>
-
-                        <a class="btn btn-success" href="{{ route('users-management.edit', $user->id) }}">
-                           Edit
-                        </a>
-
-
-                        {{-- <form action="{{ route('users-management.destroy', $user->id) }}" name="single-delete" method="POST">
-                             @csrf
-                            @method('DELETE') 
-                    
-                            <button class="btn btn-danger" type="submit" title="delete" for="single-delete" >
-                            Delete
-                            </button> --}}
+                    {{-- <form action="{{ route('users-management.destroy', $user->id) }}" name="single-delete" method="POST">
+                            @csrf
+                        @method('DELETE') 
+                
+                        <button class="btn btn-danger" type="submit" title="delete" for="single-delete" >
+                        Delete
+                        </button> --}}
                     </form> 
                 </td>
             </tr>

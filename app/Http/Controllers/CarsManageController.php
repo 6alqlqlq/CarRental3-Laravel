@@ -4,14 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Cars;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarsManageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $cars = Cars::paginate(10);
@@ -19,36 +15,32 @@ class CarsManageController extends Controller
         return view('cars.index', compact('cars'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('cars.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        Cars::create($request->all());
+        $cars = new Cars;
+        $cars->brand = $request->brand;
+        $cars->model =  $request->brand;
+       
+        $file = $request->file('image')->store("public");
+        $cars->image = $file;       
+        $cars->year = $request->year;
+        $cars->capacity = $request->capacity;
+        $cars->doors = $request->doors;
+        $cars->engine = $request->engine;
+        $cars->gearbox = $request->gearbox;
+        $cars->status = $request->status;
+        $cars->hire_cost = $request->hire_cost;
+        $cars->save();
 
-        return redirect()->route('cars.index')
+        return redirect()->route('cars-management.index')
             ->with('success', 'Cars created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Cars  $cars
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $car = Cars::findOrFail($id);
@@ -56,25 +48,12 @@ class CarsManageController extends Controller
         return view('cars.show', compact('car'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Cars  $cars
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $car = Cars::findOrFail($id);
         return view('cars.edit', compact('car'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cars  $cars
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Cars $cars)
     {
         $cars->update($request->all());
@@ -82,13 +61,7 @@ class CarsManageController extends Controller
         return redirect()->route('cars.index')
             ->with('success', 'Product updated successfully');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Cars  $cars
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Cars $cars)
     {
         $cars->delete();
@@ -97,7 +70,7 @@ class CarsManageController extends Controller
             ->with('success', 'Product deleted successfully');
     }
 
-    public function multiplecarsdelete(Request $request)
+    public function multipleCarsDelete(Request $request)
 	{
 		$id = $request->id;
 		foreach ($id as $car) 

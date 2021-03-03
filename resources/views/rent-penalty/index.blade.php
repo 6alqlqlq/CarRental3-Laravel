@@ -1,21 +1,9 @@
 @extends('layouts.dashboard')
 @section('content-title')
-    <h2>Rents Management </h2>
+    <h2>Penalty Management </h2>
 @endsection
 
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <a class="btn btn-success" href="{{ route('rents-management.create') }}" style="float: right;"> <i class="fas fa-plus-circle">Create</i>
-                    </a>
-            </div>
-            <div class="pull-right">                
-               
-            </div>
-        </div>
-    </div>
-
+@section('content')    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p></p>
@@ -26,35 +14,33 @@
         <tr>
             <td> <input type="checkbox" id="checkAll" onclick="toggle(this);" > </td>
             <td>#</td>
-            <th>name</th>
-            <th>email</th>
-            <th>username</th>
-            <th>role</th>
-
+            <th>Rent id</th>
+            <th>From date</th>
+            <th>To Date</th>
+            <th>Total</th>           
 
         </tr>
-        <form method="POST" name="delete-all" action="{{url('multiple/rent/delete')}}" >
+        <form method="POST" name="delete-all" action="{{url('multiple/rent-peanlty/delete')}}" >
             {{-- @method('DELETE') --}}
             @csrf
          <button type="submit" for="delete-all" class="btn btn-danger">  <i class="fas fa-plus-circle">Delete </i> </button>
-
-        @foreach ($rents as $rent)
+         <a class="btn btn-success" href="{{ route('rent-penalty.create') }}" style="float: right;"> <i class="fas fa-plus-circle">Create</i>
+         </a>
+        @foreach ($penaltys as $penalty)
             <tr>
-                <td><input name='id[]' type="checkbox" class="delete-checkbox" value="{{ $rent->id }}"></td>
-                <td>{{ $rent->id }}</td>
-                <td>{{ $rent->name }}</td>
-                <td>{{ $rent->email }}</td>
-                <td>{{ $rent->username }}</td>
-                <td>{{ $rent->role }}</td>
-
-
+                <td><input name='id[]' type="checkbox" class="delete-checkbox" value="{{ $penalty->id }}"></td>
+                <td>{{ $penalty->id }}</td>
+                <td>{{ $penalty->rent_id }}</td>
+                <td>{{ $penalty->from_date }}</td>
+                <td>{{ $penalty->to_date }}</td>
+                <td>{{ $penalty->total }}</td>             
                 <td>                 
 
-                        <a class="btn btn-primary" href="{{ route('rents-management.show', $rent->id) }}" title="show">
+                        <a class="btn btn-primary" href="{{ route('rent-penalty.show', $penalty->id) }}" title="show">
                            Details
                         </a>
 
-                        <a class="btn btn-success" href="{{ route('rents-management.edit', $rent->id) }}">
+                        <a class="btn btn-success" href="{{ route('rent-penalty.edit', $penalty->id) }}">
                            Edit
                         </a>
 
@@ -72,7 +58,7 @@
         @endforeach
     </table>
 </form>
-    <div class=" m-auto"> {!! $rents->links() !!} </div>
+    {{-- <div class=" m-auto"> {!! $penalty->links() !!} </div> --}}
     
 
     <script >    

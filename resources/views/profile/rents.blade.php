@@ -23,21 +23,31 @@
 		        <div class="card-body">
 		            <div class="row">
 		                <div class="col-md-12 d-flex">
-                      <h4 class="mr-auto p-2 mb-0">Your Profile</h4>                     
-                    </div>
-                  
+                      		<h4 class="mr-auto p-2 mb-0">My Rents</h4>                     
+                    	</div>                  
 		            </div>
                 <hr>
-		            <div class="row">
-		                <div class="col-md-12 ">                     
-                      <div class="d-flex">
-                        <div class="mr-auto p-2">First name</div>
-                        <div class="p-2"></div>
-                      </div>
-                      
-                      
 
-                     
+				@foreach ($rents as $rent)
+
+				<div class="row">
+					<div class="col-md-12 ">                     
+				  <div class="d-flex">
+					<div class="mr-auto p-2">Car:</div>
+					<div class="p-2">{{ $rent->car->brand }} {{ $rent->car->model }}</div>       
+														
+				  </div>
+				  <div class="d-flex">
+					<div class="mr-auto p-2">From Date:</div>
+					<div class="p-2">{{ $rent->from_date }}</div>                                                                     
+				  </div>
+				 
+				  <div class="d-flex">
+					<div class="mr-auto p-2">To Date:</div>
+					<div class="p-2">{{ $rent->to_date }}</div>                        
+				  </div>
+				  <hr>
+				@endforeach 
 		                </div>
 		            </div>		            
 		        </div>

@@ -24,48 +24,60 @@
     <form class="inline-form" action="{{ route('users-management.store') }}" method="POST" >
         @csrf
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="row mt-5">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <strong>First name:</strong>
                     <input type="text" name="first_name" class="form-control" >
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <strong>Last name:</strong>
                     <input type="text" name="last_name" class="form-control" >
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <strong>Email:</strong>
                     <input type="text" name="email" class="form-control" >
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Username:</strong>
-                    <input type="text" name="username" class="form-control" >
+                    <strong>Country:</strong>
+                    <input type="text" name="country" class="form-control" >
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <strong>City:</strong>
+                    <input type="text" name="city" class="form-control" >
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                    <strong>Address:</strong>
+                    <input type="text" name="address" class="form-control" >
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <strong>Role:</strong> 
-                    <select class="form-group" name="role" >
+                    <select class="form-control" name="role" >
                       <option value="1">Admin</option>
                       <option value="2">Moderator</option>
                       <option value="3">User</option>                      
                     </select>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <strong>Password:</strong>
                     <input type="password" name="password" class="form-control" >
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            {{-- </div> --}}
+            {{-- <div class="col-xs-6 col-sm-6 col-md-6"> --}}
                 <div class="form-group">
                     <strong>Confirm password:</strong>
                     <input type="password" name="confirm-password" class="form-control" >

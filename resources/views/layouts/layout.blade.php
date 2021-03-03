@@ -39,7 +39,7 @@
               <a class="nav-link" href="{{ route('contact-us') }}">Contact Us</a>
             </li>
           </ul>
-		
+         
             @guest
               <a class="btn btn-primary" href="{{ route('login') }}" style="margin-right: 20px;padding-right: 21px;padding-left: 21px;">{{ __('Login') }}</a>
                 @if (Route::has('register'))
@@ -69,6 +69,35 @@
               </div>
           @endguest
         </div>
+        <ul class="navbar-nav ml-auto">
+          @php $locale = session()->get('locale'); @endphp
+          <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                 @php $locale = session()->get('locale'); @endphp
+                    @switch($locale)
+                    @case('en')
+                    <img src="{{asset('img/en.png')}}" width="25px" height="25px">
+                    @break
+                    @case('bg')
+                    <img src="{{asset('img/bg.png')}}"width="25px" height="25px">
+                    @break
+                    @default
+                    <img src="{{asset('img/en.png')}}" width="25px" height="25px">
+                 @endswitch
+
+                  <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="    min-width: 5rem;">
+                @if( $locale = session()->get('locale') === "en")
+                <a class="dropdown-item" href="lang/bg"><img src="{{asset('img/bg.png')}}" width="25px" height="25px"> </a>
+                @else
+                <a class="dropdown-item" href="lang/en"><img src="{{asset('img/en.png')}}" width="25px" height="25px"> </a>
+                @endif
+
+              </div>
+          </li>
+      </ul>
       </nav>
     </header>
 	<main role="main">

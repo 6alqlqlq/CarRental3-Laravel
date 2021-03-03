@@ -5,7 +5,7 @@
 <div class="row ">   
     
     <div class="col-md-8">
-      <img class="img-fluid" src="{{ $cars->image }}" alt="{{ $cars->brand }} {{ $cars->model }}">
+      <img class="img-fluid mb-5"src="{{ URL::asset("storage/$cars->image") }}" alt="{{ $cars->brand }} {{ $cars->model }}">
     </div>
 
     <div class="col-md-4">
@@ -44,8 +44,9 @@
         <div class="p-2">{{ $cars->hire_cost }}</div>
       </div>     
     </div>
-    <a class="btn btn-primary d-flex m-auto" href="{{ route('rent',$cars->id) }}">Rent now </a>
+    <a class="btn btn-primary d-flex m-auto mt-4" href="{{ route('rent',$cars->id) }}">Rent now </a>
   </div>
+  
 </div>
 
 

@@ -15,12 +15,11 @@ class CreateRentTable extends Migration
     {
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
-            // $table->foreign('user_id');
-            // $table->foreign('car_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('car_id')->constrained()->onDelete('cascade');
+            $table->foreignId('penalty_id')->nullable()->constrained()->onDelete('cascade');                       
             $table->date('from_date');
-            $table->date('to_date');
-            $table->integer('rent_price');
-            $table->string('status');
+            $table->date('to_date');           
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateRentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rent');
+        Schema::dropIfExists('rents');
     }
 }

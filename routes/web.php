@@ -27,26 +27,31 @@ Route::get('/aboutus','HomeController@aboutUs')->name('about-us');
 Route::get('/contactus', 'ContactformController@contactUS')->name('contact-us');
 Route::post('contactus', ['as'=>'contactus.store','uses'=>'ContactformController@contactSaveData']);
 
+Route::get('lang/{locale}', 'LocalizationController@index');
 
 // Administration routes
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
+    Route::get('/calendar', 'HomeController@calendar')->name('calendar');
     Route::resource('/cars-management', 'CarsManageController');
-    Route::post('/multiple/cars/delete', 'CarsManageController@multiplecarsdelete');
+    Route::post('multiple/cars/delete', 'CarsManageController@multipleCarsDelete');
     // Route::post('/cars-management/multi-delete', 'CarsManageController@multiDelete')->name('cars-multi-delete');
 
     Route::resource('/users-management', 'UserManageController');    
-    Route::post('/multiple/users/delete', 'UserManageController@multipleusersdelete');
+    Route::post('/multiple/users/delete', 'UserManageController@multipleUsersDelete');
 
-    Route::resource('/rents-management', 'RentController')->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
-    Route::post('/multiple/rent/delete ', 'UserManageController@multipleusersdelete');      
+    Route::resource('/rents-management', 'RentController')->only(['index', 'show','create', 'store', 'edit', 'update', 'destroy']);
+    Route::post('/multiple/rent/delete ', 'UserManageController@multipleRentDelete');      
     
     Route::resource('/stats-management', 'StatisticController');
 
-    Route::resource('/rent-penalty', 'RentPenaltyController');
+    Route::resource('/rent-penalty', 'RentPenaltyController');   
+    Route::post('/multiple/rent-penalty/delete ', 'ContactformController@multiplePenaltiesDelete'); 
 
-    Route::resource('/rent-price', 'RentPriceController');
+    Route::resource('/contact-us-management', 'ContactformController')->only(['index', 'show', 'destroy']);
+    Route::post('/multiple/contact-us/delete ', 'ContactformController@multipleContactDelete'); 
 
+    Route::get('lang/{locale}', 'LocalizationController@index');
 });
 
 Route::get('profile', 'HomeController@profile')->name('profile');

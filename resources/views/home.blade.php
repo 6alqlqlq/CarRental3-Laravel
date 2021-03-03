@@ -69,19 +69,19 @@
             <img class="rounded-circle" src="{{asset('img/electric-charge-car.jpg')}}" alt="electric car charger" width="140" height="140">
             <h2>Electric cars</h2>
             <p>Prepared and charged to full electric cars</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <p><a class="btn btn-secondary" href="/cars?sortBy=electric" role="button">View Cars »</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="{{asset('img/diesel-charge-car.jpg')}}" alt="Generic placeholder image" width="140" height="140">
             <h2>Diesel</h2>
             <p>Economic diesel cars. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <p><a class="btn btn-secondary" href="/cars?sortBy=diesel" role="button">View Cars »</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="{{asset('img/gas-charge-car.jpg')}}" alt="Generic placeholder image" width="140" height="140">
             <h2>Gasoline powered viachles</h2>
             <p>Gas powered viachles.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <p><a class="btn btn-secondary" href="{{ url('/cars?sortBy=gasoline') }}" role="button">View Cars »</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
@@ -134,7 +134,7 @@
 
         <!-- /END THE FEATURETTES -->
 
-     
+    
       
 <div class="container" style="margin-bottom: 150px;">
   <div class="row blog">
@@ -151,10 +151,10 @@
 
                   <div class="carousel-item active">
                       <div class="row">
-                            @foreach ($cars as $car)
+                            @foreach ($cars1 as $car)
                                 <div class="col-md-3">
                                     <a href="#">
-                                        <img src="{{$car->image}}" alt="Image" style="max-width:100%;">
+                                        <img src="{{ URL::asset("storage/$car->image") }}" alt="Image" width="250px" height="165px">
                                     </a>
                                 </div>
                             @endforeach 
@@ -162,10 +162,10 @@
                   </div>
                   <div class="carousel-item">
                       <div class="row">
-                            @foreach ($cars as $car)
+                            @foreach ($cars2 as $car)
                                 <div class="col-md-3">
                                     <a href="#">
-                                        <img src="{{$car->image}}" alt="Image" style="max-width:100%;">
+                                        <img src="{{ URL::asset("storage/$car->image") }}" alt="Image"  width="250px" height="165px">
                                     </a>
                                 </div>
                             @endforeach 

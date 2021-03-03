@@ -66,7 +66,7 @@ class UserManageController extends Controller
         return redirect('/admin/users-management');
     }
 
-    public function multipleusersdelete(Request $request)
+    public function multipleUsersDelete(Request $request)
 	{
 		$id = $request->id;
 		foreach ($id as $user) 

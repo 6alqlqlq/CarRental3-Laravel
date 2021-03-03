@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('content-title')
-    <h2>Add rent</h2>
+    <h2>Create rent</h2>
 @endsection
 @section('content')
     <div class="row">
@@ -23,47 +23,34 @@
     @endif
     <form class="inline-form" action="{{ route('rents-management.store') }}" method="POST" >
         @csrf
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="row mt-5">            
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" >
+                    <strong>User:</strong> 
+                    <select class="form-control" name="user_id" >
+                        @foreach ($users as $user)
+                            <option value="{{ $user->id }}" >{{ $user->first_name }} {{ $user->last_name }} </option>
+                         @endforeach                       
+                    </select>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Email:</strong>
-                    <input type="text" name="email" class="form-control" >
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Username:</strong>
-                    <input type="text" name="username" class="form-control" >
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Role:</strong> 
-                    <select class="form-group" name="role" >
-                      <option value="1">Admin</option>
-                      <option value="2">Moderator</option>
-                      <option value="3">User</option>                      
+                    <strong>Car:</strong> 
+                    <select class="form-control" name="car_id" >
+                        @foreach ($cars as $car)
+                            <option value="{{ $car->id }}">{{ $car->brand }} {{ $car->model }} </option>
+                         @endforeach                       
                     </select>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Password:</strong>
-                    <input type="password" name="password" class="form-control" >
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Confirm password:</strong>
-                    <input type="password" name="confirm-password" class="form-control" >
-                </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <strong>Rent From date:</strong>                
+                <input class="form-control ml-4" type="date" name="from_date" id="datepicker" >
+              </div>
+              <div class="form-group">
+                <strong>Rent To date:</strong>   
+                <input class="form-control ml-4" type="date" name="to_date" id="datepicker" >
+              </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -71,4 +58,14 @@
         </div>
 
     </form>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    
+  <script>
+      $(function() {
+          $( "#datepicker" ).datepicker();
+      });
+  </script>
 @endsection

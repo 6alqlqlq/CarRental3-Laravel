@@ -2,74 +2,82 @@
 
 namespace App\Http\Controllers;
 
+use App\Penalty;
 use Illuminate\Http\Request;
+use App\Rent;
 
 class RentPenaltyController extends Controller
 {
     public function index()
     {
-        // $order = User::orderBy('$request-column','$request->ask or desk')->paginate(5);
+        $penaltys = Penalty::paginate(10);
 
-        $users = User::paginate(10);
-
-        return view('users.index', compact('users'));
+        return view('rent-penalty.index', compact('penaltys'));
     }
     
     public function create()
     {
-        return view('users.create');
+        $rents = Rent::all();
+       
+        return view('rent-penalty.create',[
+            'rents' => $rents
+        ]);
     }
     
     public function store(Request $request)
     {
-        User::create($request->all());
+        Penalty::create($request->all());
       
-        return redirect('/admin/users-management');
+        return redirect('/admin/rent-penalty');
     }
     
     public function show($id)
     {
-        $user = User::findOrFail($id);
-
-        return view('users.show', compact('user'));
+        $penalty = Penalty::findOrFail($id);
+        $rent = Rent::findOrFail($id);
+        return view('rent-penalty.show',[
+            'penalty' => $penalty,
+            'rent' => $rent
+        ]);
     }
     
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        $penalty = Penalty::findOrFail($id);
+       
+        $rent = Rent::all();
+
+        return view('rent-penalty.edit',[
+            'penalty' => $penalty,
+            'rents' => $rent
+        ]);
+        
     }
     
     public function update(Request $request,$id)
     {       
-        // dd($request);
-       $user = User::where('id', $id)->first();
-       $user->name = $request->name;
-       $user->email = $request->email;
-       $user->username = $request->username;
-       $user->role = $request->role;
-       $user->password = $request->password;
-       $user->save();
+       $penalty = Penalty::where('id', $id)->first();
+       $penalty->from_date = $request->from_date;
+       $penalty->to_date = $request->to_date;
+       $penalty->total = $request->total;      
+       $penalty->save();
        
-        // $users->update($request->all());
-        // doesnt update all
-
-        return redirect('/admin/users-management');
+        return redirect('/admin/rent-penalty');
     }
    
     public function destroy($id)
     {
-        User::where('id', $id)->delete();
+        Penalty::where('id', $id)->delete();
 
-        return redirect('/admin/users-management');
+        return redirect('/admin/rent-penalty');
     }
 
-    public function multipleusersdelete(Request $request)
+    public function multiplePenaltiesDelete(Request $request)
 	{
 		$id = $request->id;
-		foreach ($id as $user) 
+		foreach ($id as $penalty) 
 		{
-			User::where('id', $user)->delete();
+			Penalty::where('id', $penalty)->delete();
 		}
 		return redirect()->back();
 	}

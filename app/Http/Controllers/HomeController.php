@@ -16,10 +16,12 @@ class HomeController extends Controller
 
     public function index()
     {
-        $cars = Cars::inRandomOrder()->limit(4)->get();
+        $cars1 = Cars::inRandomOrder()->limit(4)->get();
+        $cars2 = Cars::inRandomOrder()->limit(4)->get();
         // $sepcialCars = Cars::inRandomOrder()->limit(3)->get();
         return view('home',[
-            'cars' => $cars,
+            'cars1' => $cars1,
+            'cars2' => $cars2,
             // 'special' => $sepcialCars
         ]);
     }
@@ -33,6 +35,12 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
+    public function calendar()
+    {
+        https://github.com/maddhatter/laravel-fullcalendar
+        return view('calendar');
+    }
+
     public function profile()
     {
         $user = User::where('id',Auth::user()->id)->first();
@@ -41,6 +49,7 @@ class HomeController extends Controller
             'user' => $user,
             ]);
     }
+
     public function profileEdit()
     {
         $user = User::where('id',Auth::user()->id)->first();
@@ -48,20 +57,11 @@ class HomeController extends Controller
             'user' => $user,
         ]);
     }
+
     public function profileUpdate()
     {
         $user = User::where('id',Auth::user()->id)->first();
         return view('profile.indext');
     }
 
-
-    // public function multipleusersdelete(Request $request)
-	// {
-	// 	$id = $request->id;
-	// 	foreach ($id as $user) 
-	// 	{
-	// 		User::where('id', $user)->delete();
-	// 	}
-	// 	return redirect()->back();
-	// }
 }

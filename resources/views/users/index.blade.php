@@ -7,8 +7,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <a class="btn btn-success" href="{{ route('users-management.create') }}" style="float: right;"> <i class="fas fa-plus-circle">Create</i>
-                    </a>
+               
             </div>
             <div class="pull-right">                
                
@@ -33,11 +32,12 @@
 
 
         </tr>
-        <form method="POST" name="delete-all" action="{{url('multipleusersdelete')}}" >
+        <form method="POST" name="delete-all" action="{{url('admin/multiple/users/delete')}}" >
             {{-- @method('DELETE') --}}
             @csrf
          <button type="submit" for="delete-all" class="btn btn-danger">  <i class="fas fa-plus-circle">Delete </i> </button>
-
+         <a class="btn btn-success" href="{{ route('users-management.create') }}" style="float: right;"> <i class="fas fa-plus-circle">Create</i>
+         </a>
         @foreach ($users as $user)
             <tr>
                 <td><input name='id[]' type="checkbox" class="delete-checkbox" value="{{ $user->id }}"></td>
@@ -55,7 +55,7 @@
                 <td>User</td>
                 @endif
                 
-                <td>  
+                <td style="justify-content: space-evenly;display: flex;" >  
                     <a class="btn btn-primary" href="{{ route('users-management.show', $user->id) }}" title="show">
                         Details
                     </a>
@@ -77,7 +77,7 @@
         @endforeach
     </table>
 </form>
-    <div class=" m-auto"> {!! $users->links() !!} </div>
+<div class="d-flex justify-content-center"> {!! $users->links() !!} </div>
     
 
     <script >    

@@ -5,7 +5,7 @@
   <div class="row ">   
     
     <div class="col-md-8">
-      <img class="img-fluid" src="{{ $car->image }}" alt="{{ $car->brand }} {{ $car->model }}">
+      <img class="img-fluid" src="{{ URL::asset("storage/$car->image") }}" alt="{{ $car->brand }} {{ $car->model }}">
     </div>
 
     <div class="col-md-4">
@@ -50,8 +50,8 @@
       <h3 class="my-3">Pick rent dates</h3>
       <form method="POST" action="{{ route('create-rent') }}" >
         @csrf
-        <input type="hidden" name="car" value="{{$car->id}}">
-        <input type="hidden" name="user" value="{{$user->id}}">
+        <input type="hidden" name="car_id" value="{{$car->id}}">
+        <input type="hidden" name="user_id" value="{{$user->id}}">
         <div class="d-flex">
           <div class="mr-auto p-2">Rent From date </div>        
           <input class="" type="date" name="from_date" id="datepicker">

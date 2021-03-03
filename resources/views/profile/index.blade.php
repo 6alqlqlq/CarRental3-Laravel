@@ -23,7 +23,7 @@
 		        <div class="card-body">
 		            <div class="row">
 		                <div class="col-md-12 d-flex">
-                      <h4 class="mr-auto p-2 mb-0">Your Profile</h4>
+                      <h4 class="mr-auto p-2 mb-0">Profile</h4>
                       <a class="btn btn-primary " href="{{ route('profile-edit') }}"> Edit</a>
                     </div>
                   
